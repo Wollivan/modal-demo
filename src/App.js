@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import Modal from "./Modal";
 
 function App() {
+  const [modalShow, setModalShow] = useState(false);
+
+  function handleModal() {
+    // switch modalShow value from true to false and vice versa
+    setModalShow(!modalShow);
+    console.log(modalShow);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Conditional Rendering</h1>
+      <button onClick={handleModal}>Hide/Show the modal</button>
+      {modalShow && <Modal handleModal={handleModal} />}
     </div>
   );
 }
